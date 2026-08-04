@@ -6,75 +6,206 @@
     <!-- DONT TOUCH OR MOBILE UI DIES -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CHANGE THIS TITLE FOR EACH PAGE-->
-    <title>insert title</title>
+    <title>Account - Music App</title>
 
     <link rel="stylesheet" href="css/global.css">
-
-    <!-- ADD PAGE SPECIFIC CSS BELOW HERE -->
+    <link rel="stylesheet" href="css/register.css">
 </head>
 
 <body>
 
-    <!-- ==========================
-         GLOBAL HEADER & NAVIGATION 
-         ==========================-->
-    <header>
-        <div class="logo">
-            <a href="index.html">insert logo (click to go home)</a>
+<!-- ==========================
+     GLOBAL HEADER & NAVIGATION
+     ==========================-->
+<header>
+    <div class="logo">
+        <a href="index.html">insert logo (click to go home)</a>
+    </div>
+
+    <!-- hamburger button for mobile -->
+    <button id="mobile-menu-button" aria-label="opens nav menu">☰</button>
+
+    <!-- navigation links -->
+    <nav id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="team.html">Team</a>
+
+        <!-- dark mode toggle and profile button -->
+        <div class="nav-actions">
+            <button id="toggle-theme-button" aria-label="toggle dark or light mode">MOON/SUN</button>
+            <a href="register.html" id="nav-login-button" class="active">LOGIN/REGISTER</a>
+        </div>
+    </nav>
+</header>
+
+<!-- =================
+     MAIN CONTENT AREA
+     =================-->
+<main id="main-content">
+
+    <section class="auth-container">
+        
+        <!-- Toggle Tabs: Login vs Register -->
+        <div class="auth-tabs">
+            <button id="tab-register-btn" class="tab-btn active">Register</button>
+            <button id="tab-login-btn" class="tab-btn">Login</button>
         </div>
 
-        <!-- hamburger button for mobile -->
-        <button id="mobile-menu-button" aria-label="opens nav menu">☰</button>
-
-        <!-- navigation links -->
-        <nav id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="catalogue.html">Catalogue</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="team.html">Team</a>
-
-            <!-- dark mode toggle and profile button -->
-            <div class="nav-actions">
-                <button id="toggle-theme-button" aria-label="toggle dark or light mode">MOON/SUN</button>
-                <a href="register.html" id="nav-login-button">LOGIN/REGISTER</a>
-                <!-- changes to profile button once logged in-->
+        <!-- =========================
+             REGISTER FORM (MULTI-STEP)
+             ========================= -->
+        <div id="register-section" class="auth-box">
+            <h2>Create Your Account</h2>
+            
+            <!-- Progress Indicator -->
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progress-bar"></div>
             </div>
-        </nav>
-    </header>
+            <div class="step-indicators">
+                <span class="step-node active" id="node-1">1</span>
+                <span class="step-node" id="node-2">2</span>
+                <span class="step-node" id="node-3">3</span>
+            </div>
 
-    <!-- =================
-         MAIN CONTENT AREA
-         =================-->
-    <main id="main-content">
+            <form id="multi-step-form" novalidate>
+                
+                <!-- STEP 1: Account Credentials -->
+                <div class="form-step active-step" id="step-1">
+                    <h3>Step 1: Account Credentials</h3>
+                    
+                    <div class="form-group">
+                        <label for="reg-username">Username *</label>
+                        <input type="text" id="reg-username" name="username" placeholder="e.g. music_fan99">
+                        <span class="error-message" id="err-username"></span>
+                    </div>
 
-        <!-- START HERE -->
-        <h1>Placeholder for Page Content</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper sem sed sem sagittis facilisis.
-            Maecenas facilisis ipsum sed purus suscipit, eu lobortis diam interdum. Etiam at rhoncus risus. Aliquam
-            dapibus sem sed sapien maximus ultricies. Mauris ac justo sit amet leo malesuada placerat in et neque. Proin
-            metus urna, vehicula sed nisl vitae, pharetra fermentum tortor. Aliquam fringilla faucibus magna, et
-            elementum sapien fermentum nec. Praesent eu ultrices turpis. Integer eu sapien congue, sollicitudin felis a,
-            aliquet lacus. Etiam tempor, massa ac pulvinar viverra, massa magna consequat urna, non malesuada tortor
-            nibh egestas ex. Donec sem leo, aliquet ut. </p>
+                    <div class="form-group">
+                        <label for="reg-email">Email Address *</label>
+                        <input type="email" id="reg-email" name="email" placeholder="e.g. user@example.com">
+                        <span class="error-message" id="err-email"></span>
+                    </div>
 
-    </main>
+                    <div class="form-group">
+                        <label for="reg-password">Password *</label>
+                        <input type="password" id="reg-password" name="password" placeholder="At least 6 characters">
+                        <span class="error-message" id="err-password"></span>
+                    </div>
 
-    <!-- ==========================
-         FOOTER SAME FOR EVERY PAGE
-         ========================== -->
-    <footer>
-        <p>&copy; 2026 music app. we own all rights.</p>
-    </footer>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-next" id="next-1">Next Step &rarr;</button>
+                    </div>
+                </div>
 
-    <!-- ==================
-         JAVASCRIPT SCRIPTS
-         ===================-->
+                <!-- STEP 2: Personal Details -->
+                <div class="form-step" id="step-2">
+                    <h3>Step 2: Profile Details</h3>
 
-    <!-- EVERY PAGE NEEDS THEME SCRIPT -->
-    <script src="js/theme.js"></script>
+                    <div class="form-group">
+                        <label for="reg-fullname">Full Name *</label>
+                        <input type="text" id="reg-fullname" name="fullname" placeholder="e.g. John Doe">
+                        <span class="error-message" id="err-fullname"></span>
+                    </div>
 
-    <!-- ADD PAGE-SPECIFIC JS BELOW HERE. DONT PUT THEM IN THE HEAD SECTION OR IT WONT WORK -->
+                    <div class="form-group">
+                        <label for="reg-dob">Date of Birth *</label>
+                        <input type="date" id="reg-dob" name="dob">
+                        <span class="error-message" id="err-dob"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-prev" id="prev-2">&larr; Back</button>
+                        <button type="button" class="btn btn-next" id="next-2">Next Step &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Preferences & Confirmation -->
+                <div class="form-step" id="step-3">
+                    <h3>Step 3: Music Preferences</h3>
+
+                    <div class="form-group">
+                        <label for="reg-genre">Favorite Genre *</label>
+                        <select id="reg-genre" name="genre">
+                            <option value="">-- Select a Genre --</option>
+                            <option value="Artcore">Artcore</option>
+                            <option value="EDM">EDM</option>
+                            <option value="Electropop">Electropop</option>
+                            <option value="Hardcore">Hardcore</option>
+                            <option value="Hardstyle">Hardstyle</option>
+                            <option value="House">House</option>
+                            <option value="Indie Pop">Indie Pop</option>
+                            <option value="Trance">Trance</option>
+                        </select>
+                        <span class="error-message" id="err-genre"></span>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="reg-terms"> I agree to the terms and conditions *
+                        </label>
+                        <span class="error-message" id="err-terms"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-prev" id="prev-3">&larr; Back</button>
+                        <button type="submit" class="btn btn-submit" id="submit-reg">Complete Registration</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- =========================
+             LOGIN FORM
+             ========================= -->
+        <div id="login-section" class="auth-box hidden">
+            <h2>Welcome Back</h2>
+            <form id="login-form" novalidate>
+                
+                <div class="form-group">
+                    <label for="login-username">Username or Email *</label>
+                    <input type="text" id="login-username" placeholder="Enter username or email">
+                    <span class="error-message" id="err-login-user"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password *</label>
+                    <input type="password" id="login-password" placeholder="Enter password">
+                    <span class="error-message" id="err-login-pass"></span>
+                </div>
+
+                <button type="submit" class="btn btn-submit">Log In</button>
+            </form>
+        </div>
+
+        <!-- =========================
+             LOGGED-IN PROFILE VIEW
+             ========================= -->
+        <div id="profile-section" class="auth-box hidden">
+            <h2>User Profile</h2>
+            <div class="profile-card">
+                <p><strong>Username:</strong> <span id="prof-username"></span></p>
+                <p><strong>Email:</strong> <span id="prof-email"></span></p>
+                <p><strong>Full Name:</strong> <span id="prof-fullname"></span></p>
+                <p><strong>Favorite Genre:</strong> <span id="prof-genre"></span></p>
+                <button id="logout-btn" class="btn btn-danger">Log Out</button>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ==========================
+     FOOTER SAME FOR EVERY PAGE
+     ========================== -->
+<footer>
+    <p>&copy; 2026 music app. we own all rights.</p>
+</footer>
+
+<!-- JAVASCRIPT SCRIPTS -->
+<script src="js/register.js"></script>
 
 </body>
 </html>
